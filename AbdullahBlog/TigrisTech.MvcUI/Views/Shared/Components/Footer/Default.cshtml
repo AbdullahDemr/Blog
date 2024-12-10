@@ -1,0 +1,55 @@
+﻿@model TigrisTech.Entities.Concrete.JsonTable.ContactPageInfo
+
+<div class="footer-top">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4 col-md-6 footer-links">
+                <h4>Kısa Yollar</h4>
+                <ul>
+                    <li><i class="bx bx-chevron-right"></i> <a asp-controller="Home" asp-action="Home">Anasayfa</a></li>
+                    <li><i class="bx bx-chevron-right"></i> <a asp-controller="Home" asp-action="About">Hakkımızda</a></li>
+                    <li><i class="bx bx-chevron-right"></i> <a asp-controller="Home" asp-action="Galery">Galeri</a></li>
+                    <li><i class="bx bx-chevron-right"></i> <a asp-controller="Home" asp-action="Profil">Ürünlerimiz</a></li>
+                    <li><i class="bx bx-chevron-right"></i> <a asp-controller="Home" asp-action="Blog">Blog</a></li>
+                    <li><i class="bx bx-chevron-right"></i> <a asp-controller="Home" asp-action="Contact">iletişim</a></li>
+                </ul>
+            </div>
+            <div class="col-lg-4 col-md-6 footer-contact">
+                <h4>İletişim</h4>
+                <p>
+                    @Model.Address<br>
+                    <br />
+                    <strong>Email:</strong> @Model.Email<br>
+                    <br />
+                    <strong>Telefon:</strong> @Model.PhoneNumber<br>
+                </p>
+            </div>
+            <div class="col-lg-4 col-md-6 footer-info">
+                <h3>Hakkımızda</h3>
+                <p>
+                    @Model.About
+                </p>
+                <div class="social-links mt-3">
+                    <a href="@Model.TwitterLink" target="_blank" class="twitter"><i class="bx bxl-twitter"></i></a>
+                    <a href="@Model.FacebookLink" target="_blank" class="facebook"><i class="bx bxl-facebook"></i></a>
+                    <a href="@Model.InstagramLink" target="_blank" class="instagram"><i class="bx bxl-instagram"></i></a>
+                    <a href="@Model.LinkedInLink" target="_blank" class="linkedin"><i class="bx bxl-linkedin"></i></a>
+                    <a href="@Model.YoutubeLink" target="_blank" class="youtube"><i class="bx bxl-youtube"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="copyright">
+        @DateTime.Now.Year   &copy; <strong><span>Sun Kardeşler</span></strong> Tüm hakları saklıdır.
+    </div>
+    <div class="credits">
+        Tasarımcı <a href="https://tigristech.net/">TigrisTech</a>
+    </div>
+</div>
+
+
+
+
+

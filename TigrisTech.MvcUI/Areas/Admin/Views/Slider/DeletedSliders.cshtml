@@ -1,0 +1,69 @@
+﻿@model SliderListDto
+@{
+    Layout = "_Layout";
+    ViewBag.Title = "Silinmiş Kategoriler";
+}
+<ol class="breadcrumb mb-3 mt-2">
+    <li class="breadcrumb-item"><a asp-area="Admin" asp-controller="Home" asp-action="Index">Admin</a></li>
+    <li class="breadcrumb-item active"><a asp-area="Admin" asp-controller="Slider" asp-action="DeletedCategories">Silinmiş Sliderler</a></li>
+</ol>
+
+<div id="modalPlaceHolder" aria-hidden="true"></div>
+<div class="card mb-4 mt-2">
+    <div class="card-header">
+        <i class="fas fa-table mr-1"></i>
+        Silinmiş Sliderlar
+    </div>
+    <div class="card-body">
+        <div class="spinner-border" role="status" style="display: none;">
+            <span class="sr-only">Yükleniyor...</span>
+        </div>
+        <div class="table-responsive">
+            <table class="table table-bordered" id="deletedSliderTable" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Başlık</th>
+                        <th>Açıklama</th>
+                        <th>Küçük Resim</th>
+                        <th>Aktif Mi?</th>
+                        <th>Silinmiş Mi?</th>
+                        <th>Oluşturulma Tarihi</th>
+                        <th>Oluşturan Kullanıcı Adı</th>
+                        <th>Son Düzenlenme Tarihi</th>
+                        <th>Son Düzenleyen Kullanıcı Adı</th>
+                        <th>İşlemler</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    @foreach (var slider in Model.Sliders)
+                    {
+                        <tr name="@slider.Id">
+                            <td>@slider.Id</td>
+                            <td>@slider.Title</td>
+                            <td>@slider.Description</td>
+                            <td><img src="~/img/@slider.Picture" class="my-image-table" /></td>
+                            <td>@(slider.IsActive ? "Evet" : "Hayır")</td>
+                            <td>@(slider.IsDeleted ? "Evet" : "Hayır")</td>
+                            <td>@slider.CreateDate.ToShortDateString()</td>
+                            <td>@slider.CreateByName</td>
+                            <td>@slider.ModifiedDate.ToShortDateString()</td>
+                            <td>@slider.ModifiedByName</td>
+                            <td>
+                                <a class="btn btn-primary btn-sm btn-update" data-id="@slider.Id" asp-area="Admin" asp-controller="Slider" asp-action="Update" asp-route-sliderId="@slider.Id"><span class="fas fa-edit"></span></a>
+                                <button class="btn btn-danger btn-sm btn-delete" data-id="@slider.Id"><span class="fas fa-minus-circle"></span></button>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+
+@section Scripts
+{
+<script src="~/AdminLTE/js/blog/deletedSlider.js" type="application/ecmascript"></script>
+}

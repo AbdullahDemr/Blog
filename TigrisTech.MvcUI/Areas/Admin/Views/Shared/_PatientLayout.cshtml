@@ -1,0 +1,71 @@
+﻿@using Microsoft.Extensions.Options
+@inject IOptionsSnapshot<WebsiteInfo> WebsiteInfo
+@{
+    var websiteInfo = WebsiteInfo.Value;
+}
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="@websiteInfo.SeoDescription">
+    <meta name="author" content="@websiteInfo.SeoAuthor">
+    <meta name="keywords" content="@websiteInfo.SeoTags" />
+    <title>@ViewBag.Title | @websiteInfo.Title</title>
+    @await Html.PartialAsync("_LayoutCssPartial")
+    @await RenderSectionAsync("Styles",false)
+    <link href="~/AdminLTE/css/site.css" rel="stylesheet" />
+</head>
+    <body class="hold-transition sidebar-mini layout-fixed">
+    <div class="wrapper">
+        @await Component.InvokeAsync("UserMenu")
+
+        @await Component.InvokeAsync("AdminMenu")
+        <!-- Content Wrapper. Contains page content -->
+        <div class="content-wrapper">
+
+
+            <!-- Main content -->
+            <section class="content">
+                <div class="container-fluid">
+
+                    <div class="row">
+                        @if (TempData["SuccessMessage"] != null)
+                        {
+                            <div class="alert alert-success mt-3" role="alert">
+                                @TempData["SuccessMessage"]
+                            </div>
+                        }
+
+                    </div>
+                    @RenderBody()
+
+
+                </div><!-- /.container-fluid -->
+            </section>
+            <!-- /.content -->
+        </div>
+
+        <footer class="py-4 bg-light mt-auto">
+            <div class="container-fluid px-4">
+                <div class="d-flex justify-content-between small">
+                    <div class="text-muted text-center">Tüm Hakları Saklıdır. &copy; TigrisTechBlog 2021</div>
+                    <div>
+                        <a href="#">Gizlilik Politikası</a>
+                        &middot;
+
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+    </div>
+
+
+
+
+    @await Html.PartialAsync("_LayoutJsPartial")
+    @await RenderSectionAsync("Scripts",false)
+</body>
+</html>

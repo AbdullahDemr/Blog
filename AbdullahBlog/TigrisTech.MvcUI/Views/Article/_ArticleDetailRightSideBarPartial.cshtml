@@ -1,0 +1,79 @@
+﻿@model TigrisTech.MvcUI.Models.ArticleDetailRightSideBarViewModel
+@using System.Text.RegularExpressions;
+@using TigrisTech.MvcUI.Extensions
+<div class="col-md-4">
+    
+    <div class="card my-4">
+        <img src="~/img/@Model.User.Picture" class="card-img-top text-center image-thumbnail mt-1 mb-1" alt ="@Model.User.UserName" />
+        <h5 class="card-header text-center">@Model.User.FirstName  @Model.User.LastName</h5>
+        <div class="card-body">
+           <p class="card-text text-center">@Model.User.About</p>
+             <div class="card-footer text-center">
+                 <p>Sosyal Medya Linkleri</p>
+                
+                 @if(Model.User.LinkedInLink != null)
+            {
+                <a href="@Model.User.LinkedInLink" target="_blank" class="linkedin"><i class="bx bxl-linkedin"></i></a>
+            }
+                @if(Model.User.GitHubLink != null)
+            {
+                <a href="@Model.User.GitHubLink" target="_blank" class="github"><i class="bx bxl-github"></i></a>
+            }
+                  @if(Model.User.TwitterLink != null)
+            {
+                <a href="@Model.User.TwitterLink" target="_blank" class="twitter"><i class="bx bxl-twitter"></i></a>
+            }
+                    @if(Model.User.FacebookLink != null)
+            {
+                <a href="@Model.User.FacebookLink" target="_blank" class="facebook"><i class="bx bxl-facebook"></i></a>
+            }
+                    @if(Model.User.InstagramLink != null)
+            {
+                <a href="@Model.User.InstagramLink" target="_blank" class="instagram"><i class="bx bxl-instagram"></i></a>
+            }
+                  @if(Model.User.YoutubeLink != null)
+            {
+                <a href="@Model.User.YoutubeLink" target="_blank" class="youtube"><i class="bx bxl-youtube"></i></a>
+            }
+               @if(Model.User.WebsiteLink != null)
+            {
+                <a href="@Model.User.WebsiteLink"><span class="fab fa-web"></span></a>
+            }
+        </div>
+        </div>
+    </div>
+
+    <!-- Side Widget -->
+    <div class="card my-4">
+        <h5 class="card-header">@Model.Header</h5>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-lg-12">
+                    <ul class="list-group">
+                       @for (int i=0; i<Model.ArticleListDto.Articles.Count; i++)
+                        {
+                            if (i % 2 == 0)
+                            {
+                                 <li class="list-group-item list-group-item-primary">
+                                <a href="/@Url.FriendlyUrlHelper(@Model.ArticleListDto.Articles[i].Title)/@Model.ArticleListDto.Articles[i].Id">@Model.ArticleListDto.Articles[i].Title</a>
+                                </li>
+                            }
+                            else
+                            {
+                                 <li class="list-group-item list-group-item-info">
+                                     @*href="/@Url.FriendlyUrlHelper(@article.Title)/@article.Id"*@
+                                <a href="/@Url.FriendlyUrlHelper(@Model.ArticleListDto.Articles[i].Title)/@Model.ArticleListDto.Articles[i].Id">@Model.ArticleListDto.Articles[i].Title</a>
+                                </li>
+                            }
+
+                        }
+
+                    </ul>
+                </div>
+               
+            </div>
+        </div>
+    </div>
+</div>
+
+

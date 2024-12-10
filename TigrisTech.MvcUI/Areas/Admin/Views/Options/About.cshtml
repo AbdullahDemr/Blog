@@ -1,0 +1,82 @@
+﻿@model AboutUsPageInfo
+
+@{
+    Layout = "_Layout";
+    ViewBag.Title = "Hakkımızda Sayfa İçerikleri";
+
+}
+<div class="row">
+    <div class="col-lg-8 offset-lg-2">
+        <div class="card mt-1 mb-1">
+            <div class="card-header">
+                <h4 class="text-center"><span class="fas fa-edit"></span> Hakkımızda Sayfa İçerikleri</h4>
+            </div>
+            <div class="card-body">
+                <form asp-controller="Options" asp-action="About" method="post" id="form-aboutuspageinfo-update">
+                    <div asp-validation-summary="All" class="text-danger" id="validation-summary"></div>
+                    <div class="form-row">
+                        <div class="form-group col-md-12">
+                            <label asp-for="Header"></label>
+                            <input class="form-control" asp-for="Header" placeholder="Lütfen, başlık bilgisini giriniz." />
+                            <span class="text-danger" asp-validation-for="Header"></span>
+                        </div>
+                        <div class="form-group col-md-12">
+                             <label asp-for="Content"></label>
+                            <textarea id="text-editor" asp-for="Content"></textarea>
+                            <span asp-validation-for="Content" class="text-danger"></span>
+                        </div>
+                     @*   <div class="form-group col-md-12">
+                            <label asp-for="Content"></label>
+                            <textarea class="form-control" asp-for="Content" placeholder="Lütfen, içerik bilgisini giriniz." rows="4"></textarea>
+                            <span class="text-danger" asp-validation-for="Content"></span>
+                        </div>*@
+                        <div class="form-group col-md-6">
+                            <label asp-for="SeoAuthor"></label>
+                            <input type="text" class="form-control" asp-for="SeoAuthor" placeholder="Lütfen, seo yazar bilgisini giriniz." />
+                            <span class="text-danger" asp-validation-for="SeoAuthor"></span>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label asp-for="SeoTags"></label>
+                            <input type="text" class="form-control" asp-for="SeoTags" placeholder="Lütfen, seo etiket bilgisini giriniz." />
+                            <span class="text-danger" asp-validation-for="SeoTags"></span>
+                        </div>
+                        <div class="form-group col-md-12">
+                            <label asp-for="SeoDescription"></label>
+                            <input type="text" class="form-control" asp-for="SeoDescription" placeholder="Lütfen, seo açıklama bilgisinizi giriniz." />
+                            <span class="text-danger" asp-validation-for="SeoDescription"></span>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <button type="submit" class="btn btn-primary"><span class="fas fa-save"></span> Kaydet</button>
+                            <a class="btn btn-danger" asp-area="Admin" asp-controller="Home" asp-action="Index"><span class="fas fa-times"></span> İptal</a>
+                        </div>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts
+{
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Trumbowyg/2.25.1/trumbowyg.min.js" integrity="sha512-t4CFex/T+ioTF5y0QZnCY9r5fkE8bMf9uoNH2HNSwsiTaMQMO0C9KbKPMvwWNdVaEO51nDL3pAzg4ydjWXaqbg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+   <script src="~/AdminLTE/js/dist/langs/tr.min.js" type="text/javascript" ></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Trumbowyg/2.25.1/plugins/colors/trumbowyg.colors.min.js" integrity="sha512-4QranVVhd9HLb3yDUL6q+zlHc5mEIcUrR5pfhdyyGzsqcH9vSROL0BgN8wW47mZ1tZ44tUvFkk/JXvhfNlzvHw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="~/AdminLTE/trumbowyg/dist/plugins/fontfamily/trumbowyg.fontfamily.min.js"></script>
+    <script src="~/AdminLTE/trumbowyg/dist/plugins/emoji/trumbowyg.emoji.min.js"></script>
+    <script src="~/AdminLTE/trumbowyg/dist/plugins/pasteimage/trumbowyg.pasteimage.min.js"></script>
+    <script src="~/AdminLTE/trumbowyg/dist/plugins/fontsize/trumbowyg.fontsize.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/select2@@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js" integrity="sha512-uto9mlQzrs59VwILcLiRYeLKPPbS/bT71da/OEBYEwcdNUk8jYIy+D176RYoop1Da+f9mvkYrmj5MCLZWEtQuA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="~/AdminLTE/js/articleAdd.js" type="application/ecmascript"></script>
+}
+@section Styles
+{
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Trumbowyg/2.25.1/ui/trumbowyg.min.css" integrity="sha512-nwpMzLYxfwDnu68Rt9PqLqgVtHkIJxEPrlu3PfTfLQKVgBAlTKDmim1JvCGNyNRtyvCx1nNIVBfYm8UZotWd4Q==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Trumbowyg/2.25.1/plugins/colors/ui/trumbowyg.colors.min.css" integrity="sha512-aE073TwNBnCl/Y99fSlH/29MS7CzKgrliM9rTVDURKiiGvapXN+hTmept74zsbcadVEzJ2RtfcyEyzySiYeJuA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="~/AdminLTE/trumbowyg/dist/plugins/emoji/ui/trumbowyg.emoji.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/select2@@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/themes/cupertino/jquery-ui.min.css" integrity="sha512-ug/p2fTnYRx/TfVgL8ejTWolaq93X+48/FLS9fKf7AiazbxHkSEENdzWkOxbjJO/X1grUPt9ERfBt21iLh2dxg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/themes/cupertino/theme.min.css" integrity="sha512-adRIgePtMQgAVB+Mfkhl+Nyva/WllWlFzJyyhYCjznU3Di+Z4SsYi1Rqsep11PYLpUsW/SjE4NXUkIjabQJCOQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="~/AdminLTE/css/select2-bootstrap4.min.css" />
+}

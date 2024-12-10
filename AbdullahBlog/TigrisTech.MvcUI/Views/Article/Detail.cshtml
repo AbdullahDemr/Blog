@@ -1,0 +1,73 @@
+﻿@using TigrisTech.Entities.Dtos.Blog
+@model TigrisTech.MvcUI.Models.ArticleDetailViewModel
+@{
+    Layout = "_ArticleLayout";
+    ViewBag.Title = Model.ArticleDto.Article.Title;
+    ViewBag.Description = Model.ArticleDto.Article.SeoDescription;
+    ViewBag.Author = Model.ArticleDto.Article.SeoAuthor;
+    ViewBag.Tags = Model.ArticleDto.Article.SeoTags;
+}
+<!-- ======= Blog Section ======= -->
+<section class="breadcrumbs">
+    <div class="container">
+
+        <div class="d-flex justify-content-between align-items-center">
+            <h2>Blog</h2>
+
+            <ol>
+                <li><a asp-controller="Home" asp-action="Index">Anasayfa</a></li>
+                <li><a asp-controller="Home" asp-action="Blog">Blog</a></li>
+                <li>@Model.ArticleDto.Article.Title</li>
+            </ol>
+        </div>
+
+    </div>
+</section><!-- End Blog Section -->
+
+<div class="col-lg-8 entries mt-3">
+    <article class="entry entry-single">
+        <div class="entry-img">
+            <img src="~/img/@Model.ArticleDto.Article.Thumbnail" alt="@Model.ArticleDto.Article.Title" class="card-img-top">
+        </div>
+        <h2 class="entry-title">
+            <a href="blog-single.html">@Model.ArticleDto.Article.Title</a>
+        </h2>
+        <div class="entry-meta">
+            <ul>
+                <li class="d-flex align-items-center"><i class="bi bi-person"></i> <a href="blog-single.html"> @Model.ArticleDto.Article.User.UserName</a></li>
+                <li class="d-flex align-items-center"><i class="bi bi-clock"></i> <a href="blog-single.html">@Model.ArticleDto.Article.Date.ToShortDateString()</a></li>
+                <li class="d-flex align-items-center"><i class="bi bi-chat-dots"></i> <a href="blog-single.html">12 Comments</a></li>
+            </ul>
+        </div>
+        <div class="entry-content">
+            @Html.Raw(@Model.ArticleDto.Article.Content)
+        </div>
+        <p class="text-center">
+            Okunma sayısı : <span class="badge  bg-success">@Model.ArticleDto.Article.ViewsCount</span>
+            Yorum Sayısı : <i class="badge  bg-warning">@Model.ArticleDto.Article.CommentCount</i>
+        </p>
+    </article>
+      <partial name="~/Views/Comment/_CommentAddPartial.cshtml" model="new CommentAddDto{ArticleId = Model.ArticleDto.Article.Id}"></partial>
+
+    <div id="comments">
+        <!-- Single Comment -->
+        @foreach (var comment in Model.ArticleDto.Article.Comments)
+        {
+            <div class="media mb-4">
+                <img class="d-flex mr-3 rounded-circle" src="https://randomuser.me/api/portraits/women/53.jpg" alt="">
+                <div class="media-body">
+                    <h5 class="mt-0">@comment.CreateByName</h5>
+                    @comment.Text
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+
+<partial name="_ArticleDetailRightSideBarPartial" model="@Model.ArticleDetailRightSideBarViewModel" />
+
+
+@section Scripts{
+<script src="~/BlogHome/js/articleDetail.js" type="text/ecmascript"></script>
+}

@@ -1,0 +1,25 @@
+﻿
+<style>
+    #header-error {
+        height: 80px;
+        transition: all 0.5s;
+        z-index: 997;
+        transition: all 0.5s;
+        background: #1e4356;
+    }
+    /*background: #1e4356;*/
+</style>
+
+<nav id="navbar" class="navbar">
+    <ul>
+        <li><a class="@ViewBag.HomeActive" asp-controller="Home" asp-action="Index">Anasayfa</a></li>
+        <li><a class="@ViewBag.AboutActive" asp-controller="Home" asp-action="About">Hakkımızda</a></li>
+        <li><a class="@ViewBag.GaleryActive" asp-controller="Home" asp-action="Galery">Ürünlerimiz</a></li>
+        <li><a class="@ViewBag.ProfilActive" asp-controller="Home" asp-action="Profil">Ekibimiz</a></li>
+        <li><a class="@ViewBag.BlogActive" asp-controller="Home" asp-action="Blog">Blog</a></li>
+        <li><a class="@ViewBag.ContactActive" asp-controller="Home" asp-action="Contact">iletişim</a></li>
+        @*<li><a asp-area="Admin" asp-controller="Home" asp-action="ProtecedPage">Giriş</a></li>*@
+        @*<li><a asp-area="Admin" asp-controller="Auth" asp-action="Login">Giriş</a></li>*@
+    </ul>
+    <i class="bi bi-list mobile-nav-toggle"></i>
+</nav>

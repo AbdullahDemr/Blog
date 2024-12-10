@@ -1,0 +1,70 @@
+﻿
+@model ProfilListDto
+@{
+    Layout = "_Layout";
+    ViewBag.Title = "Profil Index";
+}
+<ol class="breadcrumb mb-3 mt-2">
+    <li class="breadcrumb-item"><a asp-area="Admin" asp-controller="Home" asp-action="Index">Admin</a></li>
+    <li class="breadcrumb-item active"><a asp-area="Admin" asp-controller="Profil" asp-action="Index">Profil</a></li>
+</ol>
+<div id="modalPlaceHolder" aria-hidden="true"></div>
+<div class="card mb-12">
+    <div class="card-header">
+        <i class="fas fa-table me-1"></i>
+        Profil
+    </div>
+    <div class="card-body table-responsive">
+        <table class="table table-hover  table-sm mt-3" id="profilsTable" width="100%" cellpadding="0">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Adı</th>
+                    <th>Soyadı</th>
+                    <th>Hakkında</th>
+                    <th>Küçük Resim</th>
+                    <th>Aktif Mi?</th>
+                    <th>Silinmiş Mi?</th>
+                    <th>Oluşturulma Tarihi</th>
+                    <th>Oluşturan Kullanıcı Adı</th>
+                    <th>Son Düzenlenme Tarihi</th>
+                    <th>Son Düzenleyen Kullanıcı Adı</th>
+                    <th>İşlemler</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                @foreach (var profil in Model.Profils)
+                {
+                    <tr name="@profil.Id">
+                        <td>@profil.Id</td>
+                        <td>@profil.FirstName</td>
+                        <td>@profil.LastName</td>
+                        <td>@profil.About</td>
+                        <td><img src="~/img/@profil.Picture" class="my-image-table" /></td>
+                        <td>@(profil.IsActive ? "Evet" : "Hayır")</td>
+                        <td>@(profil.IsDeleted ? "Evet" : "Hayır")</td>
+                        <td>@profil.CreateDate.ToShortDateString()</td>
+                        <td>@profil.CreateByName</td>
+                        <td>@profil.ModifiedDate.ToShortDateString()</td>
+                        <td>@profil.ModifiedByName</td>
+                        <td>
+                            <a class="btn btn-primary btn-sm btn-update" data-id="@profil.Id" asp-area="Admin" asp-controller="Profil" asp-action="Update" asp-route-profilId="@profil.Id"><span class="fas fa-edit"></span></a>
+                            <button class="btn btn-danger btn-sm btn-delete" data-id="@profil.Id"><span class="fas fa-minus-circle"></span></button>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+@section Scripts
+{
+<script src="~/AdminLTE/js/blog/profilIndex.js" type="application/ecmascript"></script>
+
+}
+@section Styles
+{
+
+}

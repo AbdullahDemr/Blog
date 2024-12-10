@@ -1,0 +1,60 @@
+﻿@using Microsoft.Extensions.Options
+@inject IOptionsSnapshot<WebsiteInfo> WebsiteInfo
+@{
+    var websiteInfo = WebsiteInfo.Value;
+}
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="@websiteInfo.SeoDescription">
+    <meta name="author" content="@websiteInfo.SeoAuthor">
+    <meta name="keywords" content="@websiteInfo.SeoTags" />
+    <title>@ViewBag.Title | @websiteInfo.Title</title>
+    @await Html.PartialAsync("_LayoutCssPartial")
+    @await RenderSectionAsync("Styles",false)
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/alertify.min.css" />
+    <link href="~/AdminLTE/css/site.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="container-fluid">
+        <!-- Main content -->
+        <section class="content">
+            <div class="container-fluid">
+                <div class="row">
+                    @if (TempData["SuccessMessage"] != null)
+                    {
+                        <div class="alert alert-success mt-3" role="alert">
+                            @TempData["SuccessMessage"]
+                        </div>
+                    }
+                </div>
+                @RenderBody()
+                <!-- Modal -->
+                <div class="modal fade modal-info" tabindex="-1" role="dialog" id="form-modal" aria-hidden="true"
+                     aria-labelledby="exampleModalInfo">
+                    <div class="modal-dialog modal-simple">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title text-left"></h5>
+                                <button type="button" class="close text-right" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">×</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- /Modal-->
+            </div><!-- /.container-fluid -->
+        </section>
+        <!-- /.content -->
+    </div>
+    <script src="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/alertify.min.js"></script>
+    @await Html.PartialAsync("_LayoutJsPartial")
+    @await RenderSectionAsync("Scripts",false)
+</body>
+</html>

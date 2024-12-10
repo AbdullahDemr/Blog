@@ -1,0 +1,66 @@
+﻿@model TigrisTech.Entities.Concrete.JsonTable.AboutUsPageInfo
+@{
+    Layout = "_Layout";
+    ViewBag.Title = "Hakkında";
+}
+<section class="breadcrumbs">
+    <div class="container">
+
+        <div class="d-flex justify-content-between align-items-center">
+            <h2>Hakkımızda</h2>
+            <ol>
+                <li><a asp-controller="Home" asp-action="About">Anasayfa</a></li>
+                <li>Hakkımızda</li>
+            </ol>
+        </div>
+
+    </div>
+</section><!-- End Our Portfolio Section -->
+<!-- ======= About Section ======= -->
+<section class="about" data-aos="fade-up">
+    <div class="container">
+
+        <div class="row">
+            <div class="col-lg-6">
+                <img src="~/img/sunlogo.png" class="img-fluid" alt="Sun Kardeşler Logo">
+            </div>
+            <div class="col-lg-6 pt-4 pt-lg-0">
+                <h3 class="text-center">@Model.Header</h3>
+                <div class="text-center">
+                    <p>@Html.Raw(@Model.Content)</p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section><!-- End About Section -->
+@*<!-- ======= Facts Section ======= -->
+<section class="facts section-bg" data-aos="fade-up">
+    <div class="container">
+
+        <div class="row counters">
+
+            <div class="col-lg-3 col-6 text-center">
+                <span data-purecounter-start="0" data-purecounter-end="232" data-purecounter-duration="1" class="purecounter"></span>
+                <p>İstemci</p>
+            </div>
+
+            <div class="col-lg-3 col-6 text-center">
+                <span data-purecounter-start="0" data-purecounter-end="521" data-purecounter-duration="1" class="purecounter"></span>
+                <p>Projeler</p>
+            </div>
+
+            <div class="col-lg-3 col-6 text-center">
+                <span data-purecounter-start="0" data-purecounter-end="1463" data-purecounter-duration="1" class="purecounter"></span>
+                <p>Hours Of Support</p>
+            </div>
+
+            <div class="col-lg-3 col-6 text-center">
+                <span data-purecounter-start="0" data-purecounter-end="15" data-purecounter-duration="1" class="purecounter"></span>
+                <p>Hard Workers</p>
+            </div>
+
+        </div>
+
+    </div>
+</section><!-- End Facts Section -->*@

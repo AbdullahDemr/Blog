@@ -1,0 +1,111 @@
+﻿@model TigrisTech.Entities.Dtos.Editor.Sliders.SliderListDto
+@{
+    Layout = "_Layout";
+    ViewBag.Title = "Anasayfa";
+}
+
+@{
+    int counter = 0;
+}
+
+
+<!-- ======= Hero Section ======= -->
+<section id="hero" class="d-flex justify-cntent-center align-items-center">
+    <div id="heroCarousel" class="container carousel carousel-fade" data-bs-ride="carousel" data-bs-interval="5000">
+
+        @foreach (var item in Model.Sliders)
+        {
+            var activeSlider = "";
+            if (item.Id == 1)
+            {
+                activeSlider = "active";
+            }
+            <div class="carousel-item @activeSlider">
+                <div class="carousel-container">
+                    <h2 class="animate__animated animate__fadeInDown"> <span>@item.Title</span></h2>
+                    <p class="animate__animated animate__fadeInUp">@Html.Raw(@item.Description)</p>
+                    <a href="" class="btn-get-started animate__animated animate__fadeInUp">Dafa fazla oku</a>
+                </div>
+            </div>
+        }
+
+        <a class="carousel-control-prev" href="#heroCarousel" role="button" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon bx bx-chevron-left" aria-hidden="true"></span>
+        </a>
+
+        <a class="carousel-control-next" href="#heroCarousel" role="button" data-bs-slide="next">
+            <span class="carousel-control-next-icon bx bx-chevron-right" aria-hidden="true"></span>
+        </a>
+
+    </div>
+</section><!-- End Hero -->
+<!-- ======= Features Section ======= -->
+<section class="features">
+    <div class="container">
+
+        <div class="section-title">
+            <h2>Hizmetlerimiz</h2>
+
+        </div>
+
+        @foreach (var item in Model.Sliders)
+        {
+
+            counter++;
+            int mod = counter % 2;
+            if (mod == 1)
+            {
+                <div class="row" data-aos="fade-up">
+                    <div class="col-md-5">
+                        <img src="~/img/@item.Picture" class="img-fluid" alt="@item.Title">
+                    </div>
+                    <div class="col-md-7 pt-4">
+                        <h3>@item.Title</h3>
+                        <p class="fst-italic">
+                            @Html.Raw(@item.Description)
+                        </p>
+                    </div>
+                </div>
+            }
+            else
+            {
+                <div class="row" data-aos="fade-up">
+                    <div class="col-md-5 order-1 order-md-2">
+                        <img src="~/img/@item.Picture" class="img-fluid" alt="@item.Title">
+                    </div>
+                    <div class="col-md-7 pt-5 order-2 order-md-1">
+                        <h3>@item.Title</h3>
+                        <p class="fst-italic">
+                            @Html.Raw(@item.Description)
+                        </p>
+                    </div>
+                </div>
+            }
+        }
+    </div>
+</section><!-- End Features Section -->
+<!-- ======= Why Us Section ======= -->
+<section class="why-us section-bg" data-aos="fade-up" date-aos-delay="200">
+    <div class="container">
+
+        <div class="row">
+
+            <div class="col-lg-9 video-box">
+
+                <div class="ratio ratio-16x9">
+                    <iframe src="@ViewBag.Video" title="YouTube video" allowfullscreen></iframe>
+                </div>
+
+            </div>
+            <div class="col-lg-3 d-flex flex-column justify-content-center p-5">
+                <div class="icon-box">
+                    <div class="icon"><a href="@ViewBag.Video" target="_blank"><i class="bx bx-video"></i></a></div>
+                    <h4 class="title"><a href="">Tanıtım Videosu</a></h4>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section><!-- End Why Us Section -->
+

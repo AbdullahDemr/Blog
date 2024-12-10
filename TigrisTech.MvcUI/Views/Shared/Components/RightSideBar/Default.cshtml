@@ -1,0 +1,52 @@
+﻿@using TigrisTech.MvcUI.Extensions
+@model RightSideBarViewModel
+
+<div class="col-lg-4">
+    <div class="sidebar">
+        <h3 class="sidebar-title">Arama</h3>
+        <div class="sidebar-item search-form">
+            <form asp-controller="Article" asp-action="Search" method="get">
+                <div class="input-group">
+                    <input type="text" class="form-control" name="keyword" placeholder="Aranmak istenen anahtar kelime...">
+                    <span class="input-group-append">
+                        <button class="btn btn-secondary" type="submit"><i class="bi bi-search"></i>Ara!</button>
+                    </span>
+                </div>
+            </form>
+        </div><!-- End sidebar search formn-->
+        <h3 class="sidebar-title">Kategoriler</h3>
+        <div class="sidebar-item categories">
+            <ul>
+                <li class="list-group-item ">
+                    <a asp-controller="Blog" asp-action="Index">Hepsi</a>
+                </li>
+                @foreach (var category in Model.Categories)
+                {
+                    <li class="list-group-item">
+                        <a asp-controller="Home" asp-action="Blog" asp-route-categoryId="@category.Id">@category.Name    <span class="badge alert-success text-primary text-center"> (@category.Articles.Count)</span></a>
+                    </li>
+                }
+            </ul>
+        </div><!-- End sidebar categories-->
+        <h3 class="sidebar-title">En Çok Okunan Makaleler</h3>
+        <div class="sidebar-item recent-posts">
+            <div class="post-item clearfix">
+                @for (int i = 0; i < Model.Articles.Count; i++)
+                {
+                    if (i % 2 == 0)
+                    {
+                        <li class="list-group-item list-group-item-primary">
+                            <a href="/@Url.FriendlyUrlHelper(@Model.Articles[i].Title)/@Model.Articles[i].Id">@Model.Articles[i].Title</a>
+                        </li>
+                    }
+                    else
+                    {
+                        <li class="list-group-item list-group-item-info">
+                            <a href="/@Url.FriendlyUrlHelper(@Model.Articles[i].Title)/@Model.Articles[i].Id">@Model.Articles[i].Title</a>
+                        </li>
+                    }
+                }
+            </div>
+        </div><!-- End sidebar recent posts-->   
+    </div><!-- End sidebar -->
+</div><!-- End blog sidebar -->

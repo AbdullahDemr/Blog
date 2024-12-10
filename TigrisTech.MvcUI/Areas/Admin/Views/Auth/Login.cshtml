@@ -1,0 +1,64 @@
+﻿@model UserLoginDto
+@{
+    Layout = "_ForgetLayout";
+    ViewBag.Title = "Giriş Yap";
+}
+
+<style>
+    form i {
+        margin-left: -30px;
+        cursor: pointer;
+    }
+</style>
+
+<div class="login-box">
+    <div class="card card-outline card-primary">
+        <div class="card-header text-center">
+            <a asp-area="" asp-controller="Home" asp-action="Index" class="h1"><b>Tigris</b>Tech</a>
+        </div>
+        <div class="card-body">
+            <p class="login-box-msg">Oturum Açın</p>
+            <form asp-controller="Auth" asp-action="Login" method="post">
+                <div asp-validation-summary="All" class="text-danger"></div>
+                <div class="input-group mb-3">
+                    <input typeof="email" class="form-control" asp-for="Email" type="email" placeholder="Email" />
+                    <div class="input-group-append">
+                        <div class="input-group-text">
+                            <span asp-validation-for="Email" class="fas fa-envelope"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="input-group mb-3">
+                    <input class="form-control" asp-for="Password" type="password" name="password" id="password" />
+
+                    <div class="input-group-append">
+                        <div class="input-group-text">
+                            <span asp-validation-for="Password" class="fas fa-lock"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <div class="icheck-primary">
+                            <input type="checkbox" id="remember">
+                            <label for="remember">
+                                Beni Hatırla
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <br />
+                <div class="col-md-12">
+                    <button type="submit" class="btn btn-primary btn-block"><span class="fas fa-sign-in-alt"></span> Giriş Yap</button>
+                </div>
+            </form>
+            <br />
+            <p class="mb-1">
+                <a asp-area="Admin" asp-controller="Auth" asp-action="ResetPassword">Şifremi Unuttum</a>
+            </p>
+        </div>
+    </div>
+</div>
+
+
+

@@ -1,0 +1,78 @@
+﻿<!-- Jumbotron -->
+@model UserWithRolesViewModel
+<br />
+<br />
+
+@if (Model.Roles.Any(r => r.Equals("Patient.Read")))
+{
+    <!-- Small boxes (Stat box) -->
+    <div class="row">
+        <div class="col-lg-3 col-6">
+            <!-- small box -->
+            <div class="small-box bg-secondary">
+                <div class="inner">
+                    <h3>Makaleler</h3>
+                </div>
+                <div class="icon">
+                    <i class="ion ion-person"></i>
+                </div>
+
+                <a asp-area="Admin" asp-controller="Blog" asp-action="Index" class="small-box-footer"><h4>Detayları incele <i class="fas fa-arrow-circle-right"></i></h4></a>
+            </div>
+        </div>
+        <!-- ./col -->
+        <div class="col-lg-3 col-6">
+            <!-- small box -->
+            <div class="small-box bg-secondary">
+                <div class="inner">
+                    <h3>Projeler</h3>
+                </div>
+                <div class="icon">
+                    <i class="ion ion-person-add"></i>
+                </div>
+                <a asp-area="Admin" asp-controller="Galery" asp-action="Add" class="small-box-footer"><h4>Detayları incele <i class="fas fa-arrow-circle-right"></i></h4></a>
+            </div>
+        </div>
+        <!-- ./col -->
+        <div class="col-lg-3 col-6">
+            <!-- small box -->
+            <div class="small-box bg-secondary">
+                <div class="inner">
+                    <h3 class="text-white">Sliderlar</h3>
+                </div>
+                <div class="icon">
+                    <i class="ion ion-calendar"></i>
+                </div>
+                <a asp-area="Admin" asp-controller="Slider" asp-action="Index" class="small-box-footer"><h4 class="text-white">Detayları incele <i class="fas fa-arrow-circle-right"></i></h4></a>
+            </div>
+        </div>
+        @if (Model.Roles.Any(r => r.Equals("Safe.Read")))
+        {
+              <!-- ./col -->
+        <div class="col-lg-3 col-6">
+            <!-- small box -->
+            <div class="small-box bg-secondary">
+                <div class="inner">
+                    <h3>Takımımız</h3>
+                </div>
+                <div class="icon">
+                    <i class="ion ion-pie-graph"></i>
+                </div>
+                <a asp-area="Admin" asp-controller="Profil" asp-action="Index" class="small-box-footer"><h4>Detayları incele <i class="fas fa-arrow-circle-right"></i></h4></a>
+            </div>
+        </div>
+        <!-- ./col -->
+        }
+      
+    </div>
+    <!-- /.row -->
+}
+
+<div class="p-5 text-center bg-image rounded-3 mt-3"
+     style="
+    background-image: url('../img/sunlogo.png');
+    height: 580px;
+  ">
+    <img src="~/img/sunlogo.png" height="600" width="600" />
+ 
+</div>

@@ -1,0 +1,15 @@
+D:\TigrisTechSiteler\Sun\Sun\TigrisTech.Entities\bin\Release\net5.0\TigrisTech.Entities.deps.json
+D:\TigrisTechSiteler\Sun\Sun\TigrisTech.Entities\bin\Release\net5.0\TigrisTech.Entities.dll
+D:\TigrisTechSiteler\Sun\Sun\TigrisTech.Entities\bin\Release\net5.0\TigrisTech.Entities.pdb
+D:\TigrisTechSiteler\Sun\Sun\TigrisTech.Entities\bin\Release\net5.0\TigrisTech.Shared.dll
+D:\TigrisTechSiteler\Sun\Sun\TigrisTech.Entities\bin\Release\net5.0\TigrisTech.Shared.pdb
+D:\TigrisTechSiteler\Sun\Sun\TigrisTech.Entities\obj\Release\net5.0\TigrisTech.Entities.csproj.AssemblyReference.cache
+D:\TigrisTechSiteler\Sun\Sun\TigrisTech.Entities\obj\Release\net5.0\TigrisTech.Entities.GeneratedMSBuildEditorConfig.editorconfig
+D:\TigrisTechSiteler\Sun\Sun\TigrisTech.Entities\obj\Release\net5.0\TigrisTech.Entities.AssemblyInfoInputs.cache
+D:\TigrisTechSiteler\Sun\Sun\TigrisTech.Entities\obj\Release\net5.0\TigrisTech.Entities.AssemblyInfo.cs
+D:\TigrisTechSiteler\Sun\Sun\TigrisTech.Entities\obj\Release\net5.0\TigrisTech.Entities.csproj.CoreCompileInputs.cache
+D:\TigrisTechSiteler\Sun\Sun\TigrisTech.Entities\obj\Release\net5.0\TigrisTech.Entities.csproj.CopyComplete
+D:\TigrisTechSiteler\Sun\Sun\TigrisTech.Entities\obj\Release\net5.0\TigrisTech.Entities.dll
+D:\TigrisTechSiteler\Sun\Sun\TigrisTech.Entities\obj\Release\net5.0\refint\TigrisTech.Entities.dll
+D:\TigrisTechSiteler\Sun\Sun\TigrisTech.Entities\obj\Release\net5.0\TigrisTech.Entities.pdb
+D:\TigrisTechSiteler\Sun\Sun\TigrisTech.Entities\obj\Release\net5.0\ref\TigrisTech.Entities.dll

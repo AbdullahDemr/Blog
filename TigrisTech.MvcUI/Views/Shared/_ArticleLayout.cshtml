@@ -1,0 +1,43 @@
+﻿@using Microsoft.Extensions.Options
+@inject IOptionsSnapshot<WebsiteInfo> WebsiteInfo
+@{
+    var websiteInfo = WebsiteInfo.Value;
+}
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="@websiteInfo.SeoDescription">
+    <meta name="author" content="@websiteInfo.SeoAuthor">
+    <meta name="keywords" content="@websiteInfo.SeoTags"/>
+    <title>@ViewBag.Title | @websiteInfo.Title</title>
+
+    @await Html.PartialAsync("_LayoutCssPartial")
+</head>
+<body>
+    <!-- ======= Header ======= -->
+<header id="header-error" class="header-error fixed-top d-flex align-items-center header-transparent">
+    <div class="container d-flex justify-content-between align-items-center">
+        <div class="logo">
+            <h2><a class="text-light" asp-controller="Home" asp-action="Index"><img src="~/img/sunlogo.png" alt="" height="80" width="80"><span><i>@websiteInfo.MenuTitle</i></span></a></h2>
+        </div>
+        <partial name="_MainMenuPartial"></partial>      
+    </div>
+</header>
+    <main id="main">
+        <section id="blog" class="blog">
+            <div class="container" data-aos="fade-up">
+                <div class="row">
+                    @RenderBody()
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer id="footer" data-aos="fade-up" data-aos-easing="ease-in-out" data-aos-duration="500">
+        @await Component.InvokeAsync("Footer")
+    </footer>
+  @await Html.PartialAsync("_LayoutJsPartial")
+    @await RenderSectionAsync("Scripts",false)
+</body>
+</html>

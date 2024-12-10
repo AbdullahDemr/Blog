@@ -1,0 +1,139 @@
+﻿@model DashboardViewModel
+@{
+    Layout = "_Layout";
+    ViewBag.Title = "Yönetim Paneli";
+}
+
+<ol class="breadcrumb mb-3 mt-3">
+    <li class="breadcrumb-item"><a asp-area="Admin" asp-controller="Home" asp-action="Index">Admin</a></li>
+    <li class="breadcrumb-item active"><a asp-area="Admin" asp-controller="Home" asp-action="Index">Yönetim Paneli</a></li>
+</ol>
+
+<!-- Small boxes (Stat box) -->
+<div class="row">
+    <div class="col-lg-3 col-6">
+        <!-- small box -->
+        <div class="small-box bg-info">
+            <div class="inner">
+                <h3>(@Model.CategoriesCount)</h3>
+
+                <p>Kategoriler</p>
+            </div>
+            <div class="icon">
+                <i class="ion ion-bag"></i>
+            </div>
+            <a asp-area="Admin" asp-controller="Category" asp-action="Index" class="small-box-footer">Detayları incele <i class="fas fa-arrow-circle-right"></i></a>
+        </div>
+    </div>
+    <!-- ./col -->
+    <div class="col-lg-3 col-6">
+        <!-- small box -->
+        <div class="small-box bg-success">
+            <div class="inner">
+                <h3>(@Model.ArticlesCount)<sup style="font-size: 20px">%</sup></h3>
+
+                <p>Makaleler</p>
+            </div>
+            <div class="icon">
+                <i class="ion ion-stats-bars"></i>
+            </div>
+            <a asp-area="Admin" asp-controller="Articles" asp-action="Index" class="small-box-footer">Detayları incele <i class="fas fa-arrow-circle-right"></i></a>
+        </div>
+    </div>
+    <!-- ./col -->
+    <div class="col-lg-3 col-6">
+        <!-- small box -->
+        <div class="small-box bg-warning">
+            <div class="inner">
+                <h3>(@Model.UserCount)</h3>
+
+                <p>Kullanıcılar</p>
+            </div>
+            <div class="icon">
+                <i class="ion ion-person-add"></i>
+            </div>
+            <a asp-area="Admin" asp-controller="User" asp-action="Index" class="small-box-footer">Detayları incele <i class="fas fa-arrow-circle-right"></i></a>
+        </div>
+    </div>
+    <!-- ./col -->
+    <div class="col-lg-3 col-6">
+        <!-- small box -->
+        <div class="small-box bg-danger">
+            <div class="inner">
+                <h3>(@Model.CommentCount)</h3>
+
+                <p>Yorumlar</p>
+            </div>
+            <div class="icon">
+                <i class="ion ion-pie-graph"></i>
+            </div>
+            <a asp-area="Admin" asp-controller="Comment" asp-action="Index" class="small-box-footer">Detayları incele <i class="fas fa-arrow-circle-right"></i></a>
+        </div>
+    </div>
+    <!-- ./col -->
+</div>
+<!-- /.row -->
+<div class="row">
+    <div class="col-xl-12">
+        <div class="card mb-4">
+            <div class="card-header">
+                <i class="fas fa-chart-area me-1"></i>
+                En Çok Okunan Makaleler Grafiği
+            </div>
+            <div class="card-body"><canvas id="viewCountChart" width="100%" height="30"></canvas></div>
+        </div>
+    </div>
+    @*<div class="col-xl-6">
+        <div class="card mb-4">
+        <div class="card-header">
+        <i class="fas fa-chart-bar me-1"></i>
+        Bar Chart Örneği
+        </div>
+        <div class="card-body"><canvas id="myBarChart" width="100%" height="40"></canvas></div>
+        </div>
+        </div>*@
+</div>
+<div class="card mb-4">
+    <div class="card-header">
+        <i class="fas fa-table me-1"></i>
+        Son Paylaşılan Makaleler
+    </div>
+    <div class="card-body">
+        <table class="table table-hover  table-sm mt-3" id="articlesTable" width="100%" cellpadding="0">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Kategori</th>
+                    <th>Başlık</th>
+                    <th>Küçük Resim</th>
+                    <th>Tarih</th>
+                    <th>Okuma Sayısı</th>
+                    <th>Yorum Sayısı</th>
+                    <th>Aktif Mi?</th>
+                    <th>Silinmiş Mi?</th>
+                </tr>
+            </thead>          
+            <tbody>
+                @foreach (var article in Model.Articles.Articles)
+                {
+                    <tr>
+                        <td>@article.Id</td>
+                        <td>@article.Category.Name</td>
+                        <td>@article.Title</td>
+                        <td><img src="~/img/@article.Thumbnail" class="my-image-table" /></td>
+                        <td>@article.Date.ToShortDateString()</td>
+                        <td>@article.ViewsCount</td>
+                        <td>@article.CommentCount</td>
+                        <td>@(article.IsActive ? "Evet" : "Hayır")</td>
+                        <td>@(article.IsDeleted ? "Evet" : "Hayır")</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+@section Scripts
+{
+<script src="~/AdminLTE/js/homeIndex.js" type="application/ecmascript"></script>
+}

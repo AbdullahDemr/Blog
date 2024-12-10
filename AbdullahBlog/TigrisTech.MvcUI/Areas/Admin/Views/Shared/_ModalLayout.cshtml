@@ -1,0 +1,45 @@
+﻿<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TigrisTech | @ViewData["Title"]  </title>
+
+
+
+    <script src="~/lib/twitter-bootstrap/js/bootstrap.min.js"></script>
+    @*<link href="~/lib/twitter-bootstrap/css/bootstrap.min.css" rel="stylesheet" />*@
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+
+</head>
+<body>
+   <div class="modal fade modal-info" tabindex="-1" role="dialog" id="form-modal" aria-hidden="true"
+                 aria-labelledby="exampleModalInfo">
+                <div class="modal-dialog modal-simple">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title text-left"></h5>
+                            <button type="button" class="close text-right" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">×</span>
+                            </button>
+
+                        </div>
+                        <div class="modal-body">
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+    @RenderBody()
+
+
+    <script src="~/lib/twitter-bootstrap/js/bootstrap.js"></script>
+    <script src="~/lib/twitter-bootstrap/js/bootstrap.min.js"></script>
+
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>
+</body>
+</html>
+

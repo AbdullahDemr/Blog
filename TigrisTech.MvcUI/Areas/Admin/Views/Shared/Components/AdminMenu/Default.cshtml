@@ -1,0 +1,214 @@
+﻿@model TigrisTech.MvcUI.Areas.Admin.Models.UserWithRolesViewModel
+
+<aside class="main-sidebar sidebar-dark-primary elevation-4">
+    <!-- Brand Logo -->
+    <a asp-area="Admin" asp-controller="Home" asp-action="Index" class="brand-link">
+        <img src="~/img/sunlogo.png" alt="sun kardeşler" class="brand-image img-circle elevation-3" style="opacity: .8">
+        <span class="brand-text font-weight-light">Sun Kardeşler</span>
+    </a>
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <!-- Sidebar user panel (optional) -->
+        <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+            <div class="image">
+                <img src="~/img/@Model.User.Picture" alt="@Model.User.UserName" class="img-circle elevation-2">
+            </div>
+            <div class="info">
+                <a href="#" class="d-block">
+                    @if (Model.Roles.Any(r => r.Equals("SuperAdmin") || r.Equals("Admin")))
+                    {
+                        @Model.User.About
+                    }
+                    else
+                    {
+                        @Model.User.FirstName  @Model.User.LastName
+                    }
+                </a>
+            </div>
+        </div>
+        <!-- Sidebar Menu -->
+        <nav class="mt-2">
+            <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+
+                <!--Editör İşlem-->
+                @if (Model.Roles.Any(a => a.Equals("Category.Create")))
+                {
+                    <li class="nav-header" style="font-size:18px; font-style: oblique;">Editör İşlem</li>
+
+
+                    //Slider
+                    <li class="nav-item">
+                        <a class="nav-link r" asp-area="Admin" asp-controller="Doctor" asp-action="Index">
+                            <i class="fas fa-exchange-alt nav-icon"></i>
+                            <p>Doktorlar</p>
+                        </a>
+                    </li>
+                    //Slider
+                    <li class="nav-item">
+                        <a class="nav-link @ViewBag.SubActiveSlider" asp-area="Admin" asp-controller="Slider" asp-action="Index">
+                            <i class="fas fa-exchange-alt nav-icon"></i>
+                            <p>Hizmetlerimiz</p>
+                        </a>
+                    </li>
+
+
+                    //Projeler
+                    <li class="nav-item">
+                        <a class="nav-link @ViewBag.SubActiveGalery" asp-area="Admin" asp-controller="Galery" asp-action="Index">
+                            <i class="fas fa-drafting-compass nav-icon"></i>
+                            <p>Projelerimiz</p>
+                        </a>
+                    </li>
+                    //Profill
+                    <li class="nav-item">
+                        <a class="nav-link @ViewBag.SubActiveProfil" asp-area="Admin" asp-controller="Profil" asp-action="Index">
+                            <i class="fas fa-users nav-icon"></i>
+                            <p>Takımımız</p>
+                        </a>
+                    </li>
+                    //Hakkımızda
+                    <li class="nav-item">
+                        <a class="nav-link @ViewBag.SubActiveAbout" asp-area="Admin" asp-controller="Options" asp-action="About">
+                            <i class="fas fa-address-card nav-icon"></i>
+                            <p>Hakkımızda</p>
+                        </a>
+                    </li>
+                    //İletişim
+                    <li class="nav-item">
+                        <a class="nav-link @ViewBag.SubActiveContact" asp-area="Admin" asp-controller="Options" asp-action="Contact">
+                            <i class="fas fa-map-signs nav-icon"></i>
+                            <p>İletişim</p>
+                        </a>
+                    </li>
+                    //Gelen Site
+                    <li class="nav-item">
+                        <a class="nav-link @ViewBag.SubActiveGeneralSettings" asp-area="Admin" asp-controller="Options" asp-action="GeneralSettings">
+                            <i class="fas fa-cogs nav-icon"></i>
+                            <p>Genel Site Ayarları</p>
+                        </a>
+                    </li>
+
+
+
+                }
+
+                <!--Blog İşlem-->
+                @if (Model.Roles.Any(a => a.Equals("Category.Create")))
+                {
+                    <li class="nav-header" style="font-size:18px; font-style: oblique;">Blog İşlem</li>
+
+                    //Makeleler
+                    <li class="nav-item">
+                        <a class="nav-link @ViewBag.SubActiveArticle" asp-area="Admin" asp-controller="Article" asp-action="Index">
+                            <i class="fas fa-blog nav-icon"></i>
+                            <p>Makaleler</p>
+                        </a>
+                    </li>
+                    //Category
+                    <li class="nav-item">
+                        <a class="nav-link @ViewBag.SubActiveCategory" asp-area="Admin" asp-controller="Category" asp-action="Index">
+                            <i class="fas fa-list-alt nav-icon"></i>
+                            <p>Kategoriler</p>
+                        </a>
+                    </li>
+
+                    //Yorumlar
+                    <li class="nav-item">
+                        <a class="nav-link @ViewBag.SubActiveComment" asp-area="Admin" asp-controller="Comment" asp-action="Index">
+                            <i class="fas fa-comment nav-icon"></i>
+                            <p>Yorumlar</p>
+                        </a>
+                    </li>
+                    //Widget
+                    <li class="nav-item">
+                        <a class="nav-link @ViewBag.SubActiveArticleRighSideBarWidgetSettings" asp-area="Admin" asp-controller="Options" asp-action="ArticleRighSideBarWidgetSettings">
+                            <i class="fas fa-cogs nav-icon"></i>
+                            <p>Makale Sayfaları için Widget Ayarları</p>
+                        </a>
+                    </li>
+                    //Blog
+
+                }
+                <!--Ayar İşlem-->
+                @if (Model.Roles.Any(r => r.Equals("Category.Create")))
+                {
+                    <li class="nav-header" style="font-size:18px; font-style: oblique;">Ayar İşlem</li>
+                    //Kullanıcılar
+                    <li class="nav-item @ViewBag.MenuOpenUser">
+                        <a class="nav-link @ViewBag.MenuActiveUser">
+                            <i class="nav-icon fas fa-users-cog"></i>
+                            <p>
+                                Kullanıcılar
+                                <i class="fas fa-angle-left right"></i>
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a class="nav-link @ViewBag.SubActiveUser" asp-area="Admin" asp-controller="User" asp-action="Index">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Kullanıcılar</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link @ViewBag.SubActiveRole" asp-area="Admin" asp-controller="Role" asp-action="Index">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Roller</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link @ViewBag.SubActiveEmailSettings" asp-area="Admin" asp-controller="Options" asp-action="EmailSettings">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>E-Posta Ayarları</p>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    //Çöp Kutusu
+                    <li class="nav-item @ViewBag.MenuOpenDeletedPatients">
+                        <a class="nav-link @ViewBag.MenuActiveDeletedPatients">
+                            <i class="nav-icon fas fa-recycle"></i>
+                            <p>
+                                Çöp Kutusu
+                                <i class="fas fa-angle-left right"></i>
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a class="nav-link @ViewBag.SubActiveDeletedSliders" asp-area="Admin" asp-controller="Slider" asp-action="DeletedSliders">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Silinmiş Hizmetlerimiz</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link @ViewBag.SubActiveDeletedArticles" asp-area="Admin" asp-controller="Article" asp-action="DeletedArticles">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Silinmiş Makaleler</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link @ViewBag.SubActiveDeletedCategories" asp-area="Admin" asp-controller="Category" asp-action="DeletedCategories">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Silinmiş Kategoriler</p>
+                                </a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link @ViewBag.SubActiveDeletedComments" asp-area="Admin" asp-controller="Comment" asp-action="DeletedComments">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Silinmiş Yorumlar</p>
+                                </a>
+                            </li>
+
+                        </ul>
+                    </li>
+                }
+
+            </ul>
+
+        </nav>
+        <!-- /.sidebar-menu -->
+    </div>
+    <!-- /.sidebar -->
+</aside>
+
